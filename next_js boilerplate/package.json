@@ -17,6 +17,7 @@
     "@mui/material-nextjs": "^6.2.0",
     "@tanstack/react-query": "^5.62.8",
     "axios": "^1.7.9",
+    "framer-motion": "^12.23.26",
     "html-react-parser": "^5.2.2",
     "js-cookie": "^3.0.5",
     "lottie-web": "^5.12.2",

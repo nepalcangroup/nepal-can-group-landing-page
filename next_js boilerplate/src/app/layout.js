@@ -4,17 +4,17 @@ import { TopProgressBar } from "@/components/TopProgressBar";
 
 export async function generateMetadata() {
   return {
-    title: "Nepal Can Move",
-    description:
-      "Nepal Can Move: A top courier company in Nepal offering fast, secure, and reliable national & international delivery services. Contact us !",
+    title: "Nepal Can Group",
+   description:
+      "Nepal Can Group: Your trusted partner for comprehensive logistics solutions in Nepal. Featuring Nepal Can Move (national & international courier, cargo, delivery), Nepal Can Packaging, Nepal Can International, Nepal Can Code, Nepal Can Buy, Nepal Can Hire and more. Fast. Secure. Reliable.",
     icons: {
       icon: "/favicon.png",
     },
 
     openGraph: {
-      title: "Nepal Can Move",
+      title: "Nepal Can Group",
       description:
-        "Nepal Can Move: A top courier company in Nepal offering fast, secure, and reliable national & international delivery services. Contact us !",
+        "Discover Nepal Can Group brands: Nepal Can Move for fast & reliable national/international delivery, Nepal Can Packaging, Nepal Can International shipping, Nepal Can Code, Nepal Can Buy & Nepal Can Hire. Your full-service logistics partner in Nepal.",
       images: ["/meta-image.jpg"],
     },
   };
