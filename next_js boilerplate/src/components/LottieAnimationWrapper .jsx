@@ -1,7 +1,7 @@
 "use client";
 
 import lottie from "lottie-web";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const LottieAnimationWrapper = ({
   animationData,
@@ -10,8 +10,15 @@ const LottieAnimationWrapper = ({
   style = {},
 }) => {
   const containerRef = useRef(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted || typeof window === "undefined") return;
+
     const animationInstance = lottie.loadAnimation({
       container: containerRef.current,
       renderer: "svg",
@@ -23,7 +30,11 @@ const LottieAnimationWrapper = ({
     return () => {
       animationInstance.destroy();
     };
-  }, [animationData, loop, autoplay]);
+  }, [animationData, loop, autoplay, isMounted]);
+
+  if (!isMounted) {
+    return <div ref={containerRef} style={style}></div>;
+  }
 
   return <div ref={containerRef} style={style}></div>;
 };

@@ -1,5 +1,7 @@
-import SiteMissingScreen from "@/screens/SiteMissingScreen";
+"use client";
+
+import PageNotFoundScreen from "@/screens/PageNotFoundScreen";
 
 export default function SiteMissing() {
-  return <SiteMissingScreen />;
+  return <PageNotFoundScreen />;
 }

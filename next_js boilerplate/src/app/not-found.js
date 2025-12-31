@@ -1,5 +1,7 @@
+"use client";
+
 import PageNotFoundScreen from "@/screens/PageNotFoundScreen";
 
-export default async function NotFound() {
+export default function NotFound() {
   return <PageNotFoundScreen />;
 }
