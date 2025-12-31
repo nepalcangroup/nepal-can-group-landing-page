@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Box, Typography, Container } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroSection() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -146,32 +147,36 @@ export default function HeroSection() {
           </Typography>
 
           <Box sx={{ display: "flex", gap: 2 }}>
-            <Button
-              variant="contained"
-              sx={{
-                bgcolor: "var(--custom-red)",
-                px: 4,
-                py: 1.5,
-                borderRadius: "4px",
-                fontWeight: 700,
-                "&:hover": { bgcolor: "#b01832" },
-              }}
-            >
-              Learn More
-            </Button>
-            <Button
-              variant="outlined"
-              sx={{
-                color: "white",
-                borderColor: "white",
-                px: 4,
-                py: 1.5,
-                borderRadius: "4px",
-                "&:hover": { bgcolor: "white", color: "black" },
-              }}
-            >
-              Contact Us
-            </Button>
+            <Link href="/aboutus">
+              <Button
+                variant="contained"
+                sx={{
+                  bgcolor: "var(--custom-red)",
+                  px: 4,
+                  py: 1.5,
+                  borderRadius: "4px",
+                  fontWeight: 700,
+                  "&:hover": { bgcolor: "#b01832" },
+                }}
+              >
+                Learn More
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button
+                variant="outlined"
+                sx={{
+                  color: "white",
+                  borderColor: "white",
+                  px: 4,
+                  py: 1.5,
+                  borderRadius: "4px",
+                  "&:hover": { bgcolor: "white", color: "black" },
+                }}
+              >
+                Contact Us
+              </Button>
+            </Link>
           </Box>
         </Box>
       </Container>
