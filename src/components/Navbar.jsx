@@ -16,6 +16,7 @@ import {
   Container,
   Divider,
   Stack,
+  Tooltip,
 } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
@@ -507,33 +508,47 @@ export default function Navbar() {
           </Box>
 
           {/* Contact Info Card */}
-          <Box
-            sx={{
-              mt: 2,
-              p: 2,
-              bgcolor: "#fff5f6",
-              borderRadius: "16px",
-              border: "1px solid rgba(220,30,62,0.1)",
-            }}
-          >
-            <Box
-              sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 1 }}
+          <Tooltip title="Click to visit contact page" arrow>
+            <Link 
+              href="/contact" 
+              style={{ textDecoration: 'none' }}
+              onClick={() => setMobileOpen(false)}
             >
-              <PhoneIcon sx={{ color: brandRed, fontSize: 18 }} />
-              <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                9800000000
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-              <EmailIcon sx={{ color: brandRed, fontSize: 18 }} />
-              <Typography
-                variant="body2"
-                sx={{ fontWeight: 600, fontSize: "0.75rem" }}
+              <Box
+                sx={{
+                  mt: 2,
+                  p: 2,
+                  bgcolor: "#fff5f6",
+                  borderRadius: "16px",
+                  border: "1px solid rgba(220,30,62,0.1)",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    transform: "translateY(-2px)",
+                    boxShadow: "0 4px 12px rgba(220,30,62,0.15)",
+                  },
+                }}
               >
-                info@nepalcangroup.com
-              </Typography>
-            </Box>
-          </Box>
+                <Box
+                  sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 1 }}
+                >
+                  <PhoneIcon sx={{ color: brandRed, fontSize: 18 }} />
+                  <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                   01-5970736
+                  </Typography>
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+                  <EmailIcon sx={{ color: brandRed, fontSize: 18 }} />
+                  <Typography
+                    variant="body2"
+                    sx={{ fontWeight: 600, fontSize: "0.75rem" }}
+                  >
+                    info@nepalcangroup.com
+                  </Typography>
+                </Box>
+              </Box>
+            </Link>
+          </Tooltip>
         </Box>
       </Drawer>
     </>
