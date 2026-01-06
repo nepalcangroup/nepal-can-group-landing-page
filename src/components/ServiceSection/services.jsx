@@ -1,15 +1,23 @@
 "use client";
-import React from 'react';
+import React from "react";
 import Link from "next/link";
-import { Box, Container, Typography, Grid, Card, CardContent, Button } from '@mui/material';
-import { motion } from 'framer-motion';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping'; // Nepal Can Move
-import PublicIcon from '@mui/icons-material/Public'; // Nepal Can International
-import InventoryIcon from '@mui/icons-material/Inventory'; // Nepal Can Packaging
-import CodeIcon from '@mui/icons-material/Code'; // Nepal Can Code
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag'; // Nepal Can Buy
-import GroupsIcon from '@mui/icons-material/Groups'; // Nepal Can Hire
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  Button,
+} from "@mui/material";
+import { motion } from "framer-motion";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping"; // Nepal Can Move
+import PublicIcon from "@mui/icons-material/Public"; // Nepal Can International
+import InventoryIcon from "@mui/icons-material/Inventory"; // Nepal Can Packaging
+import CodeIcon from "@mui/icons-material/Code"; // Nepal Can Code
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag"; // Nepal Can Buy
+import TrackChangesIcon  from "@mui/icons-material/TrackChanges"; // Nepal Can Logistics
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const services = [
   {
@@ -38,6 +46,14 @@ const services = [
     link: "https://nepalcanpackaging.com",
   },
   {
+    title: "Nepal Can Logistics",
+    subtitle: "Talent Solutions",
+    description:
+      "Reliable logistics services empowering businesses with efficient transportation, nationwide coverage, and technology-driven delivery solutions.",
+    icon: <TrackChangesIcon  />,
+    link: "https://logistics.nepalcan.com/",
+  },
+  {
     title: "Nepal Can Code",
     subtitle: "Digital & Software",
     description:
@@ -51,21 +67,16 @@ const services = [
     description:
       "A unified marketplace offering quality products delivered to your doorstep.",
     icon: <ShoppingBagIcon />,
-    link: "https://nepalcanbuy.com",
-  },
-  {
-    title: "Nepal Can Hire",
-    subtitle: "Talent Solutions",
-    description:
-      "Connecting skilled professionals with organizations for long-term growth.",
-    icon: <GroupsIcon />,
-    link: "https://bayupayu.com/vacancy/NCG?page=1",
+    link: "https://nepalcan.com",
   },
 ];
 
 const OurServices = () => {
   return (
-    <Box component="section" sx={{ py: { xs: 10, md: 16 }, bgcolor: "#f0f4f8" }}>
+    <Box
+      component="section"
+      sx={{ py: { xs: 10, md: 16 }, bgcolor: "#f0f4f8" }}
+    >
       <Container maxWidth="lg">
         <Box mb={10} maxWidth="640px">
           <motion.div
@@ -175,7 +186,8 @@ const OurServices = () => {
                         width: 64,
                         height: 64,
                         borderRadius: 3,
-                        background: "linear-gradient(135deg, var(--custom-red), #ef4444)",
+                        background:
+                          "linear-gradient(135deg, var(--custom-red), #ef4444)",
                         color: "white",
                         display: "flex",
                         alignItems: "center",
@@ -238,7 +250,8 @@ const OurServices = () => {
                           fontSize: "0.7rem",
                           fontWeight: 600,
                           borderRadius: 999,
-                          background: "linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(239, 68, 68, 0.05))",
+                          background:
+                            "linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(239, 68, 68, 0.05))",
                           color: "var(--custom-red)",
                           border: "1px solid rgba(220, 38, 38, 0.2)",
                         }}

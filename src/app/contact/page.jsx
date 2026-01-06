@@ -4,6 +4,7 @@ import { Layout } from "@/components/Layout";
 import { Box, Skeleton } from "@mui/material";
 import ContactSection from "@/components/Contact/ContactSection";
 import ContactForm from "@/components/Contact/ContactForm";
+import MapSection from "@/components/Contact/MapSection";
 
 export default function Page() {
   return (
@@ -30,6 +31,7 @@ export default function Page() {
       <Layout>
         <ContactSection/>
         <ContactForm/>
+        <MapSection/>
       </Layout>
     </Suspense>
   );

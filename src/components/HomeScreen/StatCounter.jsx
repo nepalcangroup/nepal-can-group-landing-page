@@ -47,10 +47,9 @@ const StatCounter = ({ value, suffix = "" }) => {
 const StatsSection = () => {
   const stats = [
     { label: "YEARS", value: "7", suffix: "+" },
-    { label: "EMPLOYEES", value: "500", suffix: "+" },
-    { label: "DELIVERIES COMPLETED", value: "10", suffix: "M+" },
-    { label: "BRANCHES", value: "100", suffix: "+" },
-    { label: "HAPPY CUSTOMERS", value: "1000", suffix: "+" },
+    { label: "EMPLOYEES", value: "1500", suffix: "+" },
+    { label: "BRANCHES", value: "500", suffix: "+" },
+    { label: "HAPPY CUSTOMERS", value: "6", suffix: "M+" },
   ];
 
   return (
@@ -75,7 +74,7 @@ const StatsSection = () => {
             grid 
             grid-cols-1 
             sm:grid-cols-2 
-            lg:grid-cols-5 
+            lg:grid-cols-4 
             gap-y-14 
             gap-x-8
           "
@@ -91,7 +90,6 @@ const StatsSection = () => {
                 flex 
                 flex-col
                 items-center 
-                lg:items-start
               "
             >
               {/* Counter */}
