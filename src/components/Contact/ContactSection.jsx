@@ -55,6 +55,7 @@ export default function ContactSection() {
                   mb: 1,
                   display: "block",
                   opacity: 0.7,
+                  pt: 6,
                 }}
               >
                 CONTACT

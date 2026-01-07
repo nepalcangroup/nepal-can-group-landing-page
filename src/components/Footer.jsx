@@ -80,6 +80,9 @@ export default function Footer() {
               <Link href="https://nepalcanpackaging.com" sx={linkStyle}>
                 Nepal Can Packaging
               </Link>
+              <Link href="https://logistics.nepalcan.com/" sx={linkStyle}>
+                Nepal Can Logistics
+              </Link>
             </Stack>
           </Grid>
 
@@ -90,11 +93,8 @@ export default function Footer() {
               <Link href="https://nepalcancode.com" sx={linkStyle}>
                 Nepal Can Code
               </Link>
-              <Link href="https://nepalcanbuy.com" sx={linkStyle}>
+              <Link href="https://nepalcan.com" sx={linkStyle}>
                 Nepal Can Buy
-              </Link>
-              <Link href="https://bayupayu.com/vacancy/NCG?page=1" sx={linkStyle}>
-                Nepal Can Hire
               </Link>
             </Stack>
           </Grid>
@@ -124,12 +124,12 @@ export default function Footer() {
                   { 
                     icon: <LinkedInIcon />, 
                     label: "LinkedIn",
-                    href: "https://www.linkedin.com"
+                    href: "https://www.linkedin.com/company/nepal-can-group/"
                   },
                   { 
                     icon: <FacebookIcon />, 
                     label: "Facebook",
-                    href: "https://www.facebook.com"
+                    href: "https://www.facebook.com/nepalcangroup"
                   },
                 ].map((social, i) => (
                   <motion.div

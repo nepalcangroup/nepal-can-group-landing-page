@@ -89,15 +89,15 @@ export default function Navbar() {
       external: true,
     },
     {
-      name: "Nepal Can Buy",
-      desc: "E-commerce Platform",
-      href: "https://nepalcanbuy.com",
+      name: "Nepal Can Logistics",
+      desc: "Logistics & Transportation Management Solutions",
+      href: "https://logistics.nepalcan.com",
       external: true,
     },
     {
-      name: "Nepal Can Hire",
-      desc: "Talent Solutions",
-      href: "https://bayupayu.com/vacancy/NCG?page=1",
+      name: "Nepal Can Buy",
+      desc: "Online Marketplace with Fast Delivery",
+      href: "https://nepalcan.com",
       external: true,
     },
   ];
@@ -128,6 +128,11 @@ export default function Navbar() {
           display: { xs: "none", lg: "flex" },
           alignItems: "center",
           overflow: "hidden",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1300,
         }}
       >
         <Container maxWidth="xl">
@@ -185,7 +190,7 @@ export default function Navbar() {
               {/* Social Icons */}
               <Stack direction="row" spacing={2}>
                 <Link
-                  href="https://www.facebook.com"
+                  href="https://www.facebook.com/nepalcangroup"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ textDecoration: "none" }}
@@ -200,7 +205,7 @@ export default function Navbar() {
                   />
                 </Link>
                 <Link
-                  href="https://www.linkedin.com"
+                  href="https://www.linkedin.com/company/nepal-can-group/"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ textDecoration: "none" }}

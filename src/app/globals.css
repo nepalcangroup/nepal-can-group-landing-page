@@ -22,6 +22,20 @@
 
 body {
   margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  /* width: 100%; */
+}
+
+/* Add spacing for fixed navbar */
+main {
+  padding-top: 40px; /* Top bar height */
+}
+
+@media (max-width: 1024px) {
+  main {
+    padding-top: 0px; /* No top bar on mobile */
+  }
 }
 
 #nprogress .bar {
@@ -39,4 +53,9 @@ body {
 
 #custom-code-component {
   all: unset;
+}
+
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
 }
