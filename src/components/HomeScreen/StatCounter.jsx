@@ -47,7 +47,7 @@ const StatCounter = ({ value, suffix = "" }) => {
 const StatsSection = () => {
   const stats = [
     { label: "YEARS", value: "7", suffix: "+" },
-    { label: "EMPLOYEES", value: "1500", suffix: "+" },
+    { label: "EMPLOYEES", value: "2000", suffix: "+" },
     { label: "BRANCHES", value: "500", suffix: "+" },
     { label: "HAPPY CUSTOMERS", value: "6", suffix: "M+" },
   ];

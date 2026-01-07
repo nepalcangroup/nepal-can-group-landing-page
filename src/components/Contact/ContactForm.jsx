@@ -86,14 +86,15 @@ export default function ContactForm() {
 
             <div className="space-y-8">
               {/* Email */}
-              <a
-                href="mailto:info@nepalcangroup.com"
+              <div
                 className="flex items-center gap-6 group cursor-pointer"
+                onClick={() => {
+                  window.location.href = "mailto:info@nepalcangroup.com";
+                }}
               >
                 <div className="w-14 h-14 flex items-center justify-center rounded-full border border-gray-100 shadow-sm text-[var(--custom-red)] bg-white group-hover:bg-[var(--custom-red)] group-hover:text-white transition-all">
                   <Email fontSize="medium" />
                 </div>
-
                 <div>
                   <h4 className="font-bold text-gray-900 text-lg">Email Us</h4>
                   <p className="text-gray-600">info@nepalcangroup.com</p>
@@ -101,17 +102,18 @@ export default function ContactForm() {
                     Support available 24/7
                   </span>
                 </div>
-              </a>
+              </div>
 
               {/* Phone */}
-              <a
-                href="tel:015970736"
+              <div
                 className="flex items-center gap-6 group cursor-pointer"
+                onClick={() => {
+                  window.location.href = "tel:01-5970736";
+                }}
               >
                 <div className="w-14 h-14 flex items-center justify-center rounded-full border border-gray-100 shadow-sm text-[var(--custom-red)] bg-white group-hover:bg-[var(--custom-red)] group-hover:text-white transition-all">
                   <Phone fontSize="medium" />
                 </div>
-
                 <div>
                   <h4 className="font-bold text-gray-900 text-lg">Call Us</h4>
                   <p className="text-gray-600">01-5970736</p>
@@ -119,7 +121,7 @@ export default function ContactForm() {
                     Sun - Fri, 10am - 6pm
                   </span>
                 </div>
-              </a>
+              </div>
 
               {/* Address */}
               <div
@@ -315,7 +317,7 @@ export default function ContactForm() {
                   <TextField
                     {...field}
                     label="Your Message"
-                    placeholder="How can we help you?"
+                    placeholder="How can we assist you?"
                     fullWidth
                     multiline
                     rows={4}
