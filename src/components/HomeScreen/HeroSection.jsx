@@ -42,9 +42,9 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative h-screen w-screen overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden">
       {/* Slider Container */}
-      <div className="relative h-full w-full">
+      <div className="absolute inset-0 overflow-hidden">
         {slides.map((slide, index) => (
           <div
             key={index}
@@ -52,7 +52,7 @@ export default function HeroSection() {
               index === activeSlide ? "opacity-100" : "opacity-0"
             }`}
           >
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-full overflow-hidden">
               <Image
                 src={slide.src}
                 alt={slide.alt}
@@ -60,7 +60,7 @@ export default function HeroSection() {
                 className="object-cover"
                 style={{
                   transition: "transform 8s ease-out",
-                  transform: index === activeSlide ? "scale(1.15)" : "scale(1)",
+                  transform: index === activeSlide ? "scale(1.08)" : "scale(1)",
                 }}
                 priority={index === 0}
               />
