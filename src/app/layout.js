@@ -5,7 +5,7 @@ import { TopProgressBar } from "@/components/TopProgressBar";
 export async function generateMetadata() {
   return {
     title: "Nepal Can Group",
-   description:
+    description:
       "Nepal Can Group: Your trusted partner for comprehensive logistics solutions in Nepal. Featuring Nepal Can Move (national & international courier, cargo, delivery), Nepal Can Packaging, Nepal Can International, Nepal Can Code, Nepal Can Buy, Nepal Can Hire and more. Fast. Secure. Reliable.",
     icons: {
       icon: "/favicon.png",
