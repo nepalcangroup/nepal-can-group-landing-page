@@ -95,7 +95,7 @@ export default function Navbar() {
       external: true,
     },
     {
-      name: "Nepal Can Buy",
+      name: "NepalCan.com",
       desc: "Online Marketplace with Fast Delivery",
       href: "https://nepalcan.com",
       external: true,
@@ -169,7 +169,7 @@ export default function Navbar() {
             <Stack direction="row" spacing={3} alignItems="center">
               {/* Careers Link */}
               <Link
-                href="https://bayupayu.com/vacancy/NCG?page=1"
+                href="/career"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ textDecoration: "none" }}
@@ -279,7 +279,7 @@ export default function Navbar() {
               </Link>
 
               {/* Other Links */}
-              {["About Us", "Services"].map((item) => (
+              {["About Us", "Services", "Blog"].map((item) => (
                 <Link
                   key={item}
                   href={`/${item.toLowerCase().replace(" ", "")}`}
@@ -449,7 +449,7 @@ export default function Navbar() {
           </Box>
 
           <List disablePadding>
-            {["Home", "About Us", "Services"].map((text) => (
+            {["Home", "About Us", "Services", "Blog"].map((text) => (
               <ListItem key={text} disablePadding sx={{ mb: 1 }}>
                 <ListItemButton
                   component={Link}
@@ -514,9 +514,9 @@ export default function Navbar() {
 
           {/* Contact Info Card */}
           <Tooltip title="Click to visit contact page" arrow>
-            <Link 
-              href="/contact" 
-              style={{ textDecoration: 'none' }}
+            <Link
+              href="/contact"
+              style={{ textDecoration: "none" }}
               onClick={() => setMobileOpen(false)}
             >
               <Box
@@ -535,11 +535,16 @@ export default function Navbar() {
                 }}
               >
                 <Box
-                  sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 1 }}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 1.5,
+                    mb: 1,
+                  }}
                 >
                   <PhoneIcon sx={{ color: brandRed, fontSize: 18 }} />
                   <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                   01-5970736
+                    01-5970736
                   </Typography>
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>

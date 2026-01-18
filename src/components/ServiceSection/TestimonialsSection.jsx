@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   Box,
   Container,
@@ -9,9 +9,14 @@ import {
   Card,
   CardContent,
   Avatar,
+  IconButton,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import ReactPlayer from "react-player";
+import CloseIcon from "@mui/icons-material/Close";
 
 const testimonials = [
   {
@@ -38,30 +43,50 @@ const testimonials = [
       "Nepal Can International helped us expand our reach globally. Their international shipping services are reliable, affordable, and the customer support is exceptional.",
     image: "/contact/building.jpg",
   },
-  {
-    name: "Anita Mishra",
-    position: "HR Director",
-    company: "Manufacturing Company",
-    content:
-      "Nepal Can Hire has been our trusted partner for talent acquisition. They understand our needs and consistently provide qualified candidates who fit our culture.",
-    image: "/contact/building.jpg",
-  },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 },
+const videos = [
+  {
+    title: "xyz - E-commerce",
+    src: "https://www.youtube.com/watch?v=Re1Ihm_ljLE",
   },
-};
+  {
+    title: "abc - International Shipping",
+    src: "https://www.youtube.com/watch?v=QFhRaskow4Y",
+  },
+  { title: "Video 3", src: "https://www.youtube.com/watch?v=IlPf9utJYbw" },
+];
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-};
+const TestimonialsSection = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const scrollRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [openVideo, setOpenVideo] = useState(null);
 
-export default function TestimonialsSection() {
+  // Scroll to active testimonial dot
+  const scrollToIndex = (index) => {
+    const container = scrollRef.current;
+    if (container) {
+      const cardWidth = container.firstChild.offsetWidth + 16;
+      container.scrollTo({ left: index * cardWidth, behavior: "smooth" });
+      setActiveIndex(index);
+    }
+  };
+
+  // Update active dot on scroll
+  useEffect(() => {
+    if (!isMobile) return;
+    const container = scrollRef.current;
+    const onScroll = () => {
+      const cardWidth = container.firstChild.offsetWidth + 16;
+      const newIndex = Math.round(container.scrollLeft / cardWidth);
+      setActiveIndex(newIndex);
+    };
+    container.addEventListener("scroll", onScroll);
+    return () => container.removeEventListener("scroll", onScroll);
+  }, [isMobile]);
+
   return (
     <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: "white" }}>
       <Container maxWidth="lg">
@@ -130,118 +155,270 @@ export default function TestimonialsSection() {
           </Box>
         </motion.div>
 
-        {/* Testimonials Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        {/* Video Grid */}
+        <Box sx={{ mb: 8 }}>
           <Grid container spacing={4}>
-            {testimonials.map((testimonial) => (
-              <Grid
-                key={testimonial.name}
-                item
-                xs={12}
-                md={6}
-                sx={{ display: "flex" }}
-              >
-                <motion.div
-                  variants={itemVariants}
-                  style={{ display: "flex", width: "100%" }}
+            {videos.map((video) => (
+              <Grid key={video.title} item xs={12} sm={6} md={4}>
+                <Card
+                  sx={{
+                    borderRadius: 3,
+                    overflow: "hidden",
+                    boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => setOpenVideo(video.src)}
                 >
-                  <Card
-                    elevation={0}
+                  <ReactPlayer
+                    url={video.src}
+                    controls
+                    width="100%"
+                    height={200}
+                  />
+                  <CardContent>
+                    <Typography
+                      variant="subtitle1"
+                      fontWeight={700}
+                      sx={{ textAlign: "center" }}
+                    >
+                      {video.title}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+
+        {/* Fullscreen Overlay Video */}
+        {openVideo && (
+          <Box
+            sx={{
+              position: "fixed",
+              inset: 0,
+              zIndex: 9999,
+              bgcolor: "rgba(0,0,0,0.95)",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              p: 2,
+            }}
+          >
+            <IconButton
+              onClick={() => setOpenVideo(null)}
+              sx={{ position: "absolute", top: 16, right: 16, color: "white" }}
+            >
+              <CloseIcon />
+            </IconButton>
+            <ReactPlayer
+              url={openVideo}
+              controls
+              playing
+              width="80%"
+              height="80%"
+            />
+          </Box>
+        )}
+
+        {/* Testimonials */}
+        <Box sx={{ position: "relative" }}>
+          {isMobile ? (
+            <Box
+              ref={scrollRef}
+              sx={{
+                display: "flex",
+                gap: 2,
+                overflowX: "auto",
+                scrollBehavior: "smooth",
+                py: 2,
+                cursor: "grab",
+                "&::-webkit-scrollbar": { display: "none" },
+              }}
+            >
+              {testimonials.map((testimonial, idx) => (
+                <Card
+                  key={idx}
+                  sx={{
+                    minWidth: "80vw",
+                    maxWidth: "90vw",
+                    flexShrink: 0,
+                    borderRadius: 4,
+                    border: "1px solid #e2e8f0",
+                    p: 3,
+                    boxShadow: "0 4px 16px rgba(0,0,0,0.05)",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <CardContent
                     sx={{
-                      flex: 1,
                       display: "flex",
                       flexDirection: "column",
+                      gap: 2,
+                      flexGrow: 1,
+                    }}
+                  >
+                    <FormatQuoteIcon
+                      sx={{
+                        fontSize: "3rem",
+                        color: "rgba(220, 38, 38, 0.12)",
+                        transform: "rotate(180deg)",
+                      }}
+                    />
+                    <Typography
+                      sx={{
+                        color: "#475569",
+                        fontStyle: "italic",
+                        lineHeight: 1.5,
+                        fontSize: "0.95rem",
+                        overflow: "hidden",
+                      }}
+                    >
+                      “{testimonial.content}”
+                    </Typography>
+                  </CardContent>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 3,
+                      mt: 2,
+                    }}
+                  >
+                    <Avatar
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      sx={{
+                        width: 56,
+                        height: 56,
+                        border: "2px solid var(--custom-red)",
+                      }}
+                    />
+                    <Box>
+                      <Typography fontWeight={700} color="#1e293b">
+                        {testimonial.name}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{ color: "var(--custom-red)", fontWeight: 600 }}
+                      >
+                        {testimonial.position}
+                      </Typography>
+                      <Typography variant="caption" color="#64748b">
+                        {testimonial.company}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Card>
+              ))}
+            </Box>
+          ) : (
+            <Grid container spacing={4}>
+              {testimonials.map((testimonial, idx) => (
+                <Grid item xs={12} sm={6} md={4} key={idx}>
+                  <Card
+                    sx={{
                       borderRadius: 4,
                       border: "1px solid #e2e8f0",
-                      transition: "all 0.3s ease",
-                      "&:hover": {
-                        boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-                        transform: "translateY(-4px)",
-                        borderColor: "var(--custom-red)",
-                      },
+                      p: 3,
+                      boxShadow: "0 4px 16px rgba(0,0,0,0.05)",
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
                     }}
                   >
                     <CardContent
                       sx={{
-                        p: 4,
-                        height: "100%",
                         display: "flex",
                         flexDirection: "column",
+                        gap: 2,
+                        flexGrow: 1,
                       }}
                     >
-                      {/* Quote Icon */}
                       <FormatQuoteIcon
                         sx={{
                           fontSize: "3rem",
                           color: "rgba(220, 38, 38, 0.12)",
                           transform: "rotate(180deg)",
-                          mb: 2,
                         }}
                       />
-
-                      {/* Content */}
                       <Typography
                         sx={{
                           color: "#475569",
                           fontStyle: "italic",
-                          lineHeight: 1.7,
-                          fontSize: "1rem",
-                          mb: "auto",
-                          minHeight: "6.5rem",
-                          display: "flex",
-                          alignItems: "center",
+                          lineHeight: 1.5,
+                          fontSize: "0.95rem",
+                          overflow: "hidden",
                         }}
                       >
                         “{testimonial.content}”
                       </Typography>
-
-                      {/* Author */}
-                      <Box
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 3,
-                          mt: 4,
-                        }}
-                      >
-                        <Avatar
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          sx={{
-                            width: 56,
-                            height: 56,
-                            border: "2px solid var(--custom-red)",
-                          }}
-                        />
-
-                        <Box>
-                          <Typography fontWeight={700} color="#1e293b">
-                            {testimonial.name}
-                          </Typography>
-                          <Typography
-                            variant="body2"
-                            sx={{ color: "var(--custom-red)", fontWeight: 600 }}
-                          >
-                            {testimonial.position}
-                          </Typography>
-                          <Typography variant="caption" color="#64748b">
-                            {testimonial.company}
-                          </Typography>
-                        </Box>
-                      </Box>
                     </CardContent>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 3,
+                        mt: 2,
+                      }}
+                    >
+                      <Avatar
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        sx={{
+                          width: 56,
+                          height: 56,
+                          border: "2px solid var(--custom-red)",
+                        }}
+                      />
+                      <Box>
+                        <Typography fontWeight={700} color="#1e293b">
+                          {testimonial.name}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          sx={{ color: "var(--custom-red)", fontWeight: 600 }}
+                        >
+                          {testimonial.position}
+                        </Typography>
+                        <Typography variant="caption" color="#64748b">
+                          {testimonial.company}
+                        </Typography>
+                      </Box>
+                    </Box>
                   </Card>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
-        </motion.div>
+                </Grid>
+              ))}
+            </Grid>
+          )}
+
+          {/* Dots only on mobile */}
+          {isMobile && (
+            <Box
+              sx={{ display: "flex", justifyContent: "center", gap: 1, mt: 2 }}
+            >
+              {testimonials.map((_, idx) => (
+                <Box
+                  key={idx}
+                  onClick={() => scrollToIndex(idx)}
+                  sx={{
+                    width: 10,
+                    height: 10,
+                    borderRadius: "50%",
+                    bgcolor:
+                      idx === activeIndex ? "var(--custom-red)" : "#cbd5e1",
+                    cursor: "pointer",
+                  }}
+                />
+              ))}
+            </Box>
+          )}
+        </Box>
       </Container>
     </Box>
   );
-}
+};
+
+export default TestimonialsSection;

@@ -94,7 +94,7 @@ export default function Footer() {
                 Nepal Can Code
               </Link>
               <Link href="https://nepalcan.com" sx={linkStyle}>
-                Nepal Can Buy
+                NepalCan.com
               </Link>
             </Stack>
           </Grid>
@@ -105,13 +105,13 @@ export default function Footer() {
             <Stack spacing={2}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                 <EmailIcon sx={{ fontSize: 18 }} />
-                <Typography variant="body2">
-                  info@nepalcangroup.com
-                </Typography>
+                <Typography variant="body2">info@nepalcangroup.com</Typography>
               </Box>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                 <LocationOnIcon sx={{ fontSize: 18 }} />
-                <Typography variant="body2">Tinkune, Kathmandu, Nepal</Typography>
+                <Typography variant="body2">
+                  Tinkune, Kathmandu, Nepal
+                </Typography>
               </Box>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                 <Phone sx={{ fontSize: 18 }} />
@@ -121,15 +121,15 @@ export default function Footer() {
               {/* Social Icons */}
               <Stack direction="row" spacing={1} sx={{ mt: 1 }}>
                 {[
-                  { 
-                    icon: <LinkedInIcon />, 
+                  {
+                    icon: <LinkedInIcon />,
                     label: "LinkedIn",
-                    href: "https://www.linkedin.com/company/nepal-can-group/"
+                    href: "https://www.linkedin.com/company/nepal-can-group/",
                   },
-                  { 
-                    icon: <FacebookIcon />, 
+                  {
+                    icon: <FacebookIcon />,
                     label: "Facebook",
-                    href: "https://www.facebook.com/nepalcangroup"
+                    href: "https://www.facebook.com/nepalcangroup",
                   },
                 ].map((social, i) => (
                   <motion.div
