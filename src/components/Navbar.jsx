@@ -63,6 +63,14 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
+  useEffect(() => {
+  if (pathname !== "/") {
+    setIsHeroSection(false);
+  } else {
+    setIsHeroSection(window.scrollY < window.innerHeight - 100);
+  }
+}, [pathname]);
+
   const companies = [
     {
       name: "Nepal Can Move",
