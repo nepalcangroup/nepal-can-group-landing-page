@@ -170,8 +170,6 @@ export default function Navbar() {
               {/* Careers Link */}
               <Link
                 href="/career"
-                target="_blank"
-                rel="noopener noreferrer"
                 style={{ textDecoration: "none" }}
               >
                 <Typography

@@ -83,43 +83,15 @@ const BlogCard = ({ blog, index }) => {
             overflow: "hidden",
           }}
         >
-          {blog.image &&
-          (blog.image.startsWith("/") ||
-            blog.image.includes("placeholder.com")) ? (
+          {blog.image ? (
             <Image
               src={getSafeImage(blog.image)}
               alt={blog.title}
               fill
-              style={{ objectFit: "cover" }}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              onError={(e) => {
-                e.target.style.display = "none";
-                e.target.nextSibling.style.display = "flex";
-              }}
+              style={{ objectFit: "cover" }}
             />
-          ) : null}
-          <Box
-            sx={{
-              width: "100%",
-              height: "100%",
-              background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-              display:
-                blog.image &&
-                !blog.image.startsWith("/") &&
-                !blog.image.includes("placeholder.com")
-                  ? "flex"
-                  : "none",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Typography variant="h4" sx={{ color: "white", fontWeight: 600 }}>
-              Blog
-            </Typography>
-          </Box>
-          {(!blog.image ||
-            (!blog.image.startsWith("/") &&
-              !blog.image.includes("placeholder.com"))) && (
+          ) : (
             <Box
               sx={{
                 position: "absolute",
@@ -130,11 +102,12 @@ const BlogCard = ({ blog, index }) => {
                 justifyContent: "center",
               }}
             >
-              <Typography variant="h4" sx={{ color: "white", fontWeight: 600 }}>
+              <Typography variant="h4" color="white" fontWeight={600}>
                 Blog
               </Typography>
             </Box>
           )}
+
           <Chip
             label="Blog"
             size="small"
@@ -142,7 +115,7 @@ const BlogCard = ({ blog, index }) => {
               position: "absolute",
               top: 16,
               left: 16,
-              backgroundColor: "var(--custom-red)",
+              bgcolor: "var(--custom-red)",
               color: "white",
               fontWeight: 600,
             }}
@@ -228,7 +201,7 @@ export default function BlogListPage() {
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs`,
           {
             cache: "no-store",
-          }
+          },
         );
 
         if (!res.ok) {

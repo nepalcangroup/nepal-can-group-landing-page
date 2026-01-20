@@ -53,7 +53,7 @@ export default function BlogDetailScreen({ blogId }) {
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs/${blogId}`,
           {
             cache: "no-store",
-          }
+          },
         );
         if (!res.ok) throw new Error("Blog not found");
         const data = await res.json();
@@ -61,7 +61,7 @@ export default function BlogDetailScreen({ blogId }) {
 
         // Check if this post is already saved
         const savedPosts = JSON.parse(
-          localStorage.getItem("savedPosts") || "[]"
+          localStorage.getItem("savedPosts") || "[]",
         );
         setIsSaved(savedPosts.includes(data.id));
 
@@ -71,7 +71,7 @@ export default function BlogDetailScreen({ blogId }) {
             `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs`,
             {
               cache: "no-store",
-            }
+            },
           );
           if (relatedRes.ok) {
             const allPosts = await relatedRes.json();
@@ -199,17 +199,17 @@ export default function BlogDetailScreen({ blogId }) {
     switch (platform) {
       case "facebook":
         shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-          url
+          url,
         )}`;
         break;
       case "twitter":
         shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-          title
+          title,
         )}&url=${encodeURIComponent(url)}`;
         break;
       case "linkedin":
         shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-          url
+          url,
         )}`;
         break;
       case "copy":
@@ -285,7 +285,7 @@ export default function BlogDetailScreen({ blogId }) {
     );
 
   const tableOfContents = generateTableOfContents(
-    blog?.content || blog?.body || ""
+    blog?.content || blog?.body || "",
   );
   const categories = generateCategories(blog?.tags);
   const readingTime = estimateReadingTime(blog?.content || blog?.body || "");
@@ -328,7 +328,7 @@ export default function BlogDetailScreen({ blogId }) {
                   mb: 4,
                   background: `linear-gradient(135deg, ${alpha(
                     theme.palette.primary.main,
-                    0.05
+                    0.05,
                   )} 0%, ${alpha(theme.palette.secondary.main, 0.05)} 100%)`,
                   border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
                 }}
@@ -418,7 +418,7 @@ export default function BlogDetailScreen({ blogId }) {
                       </Typography>
                       <Typography variant="caption" color="text.secondary">
                         {formatDate(
-                          blog?.createdAt || blog?.date || "January 18, 2026"
+                          blog?.createdAt || blog?.date || "January 18, 2026",
                         )}
                       </Typography>
                     </Box>
@@ -535,54 +535,34 @@ export default function BlogDetailScreen({ blogId }) {
               </Paper>
 
               {/* Hero Image  */}
-              {blog.image && (
-                <Box
+              <Box
+                sx={{
+                  position: "relative",
+                  height: { xs: 200, sm: 220, md: 240 },
+                  overflow: "hidden",
+                }}
+              >
+                <Image
+                  src={getSafeImage(blog.image)}
+                  alt={blog.title}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+
+                <Chip
+                  label="Blog"
+                  size="small"
                   sx={{
-                    position: "relative",
-                    height: { xs: 280, md: 420 },
-                    borderRadius: 3,
-                    overflow: "hidden",
-                    mb: 6,
-                    boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
-                    "&::after": {
-                      content: '""',
-                      position: "absolute",
-                      inset: 0,
-                      background:
-                        "linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.3) 100%)",
-                      zIndex: 1,
-                    },
+                    position: "absolute",
+                    top: 16,
+                    left: 16,
+                    backgroundColor: "var(--custom-red)",
+                    color: "white",
+                    fontWeight: 600,
                   }}
-                >
-                  <Image
-                    src={getSafeImage(blog.image)}
-                    alt={blog.title}
-                    fill
-                    style={{ objectFit: "cover" }}
-                    priority
-                    onError={(e) => {
-                      if (e?.target?.parentElement) {
-                        e.target.style.display = "none";
-                        e.target.parentElement.style.background =
-                          "linear-gradient(135deg, #667eea 0%, #764ba2 100%)";
-                      }
-                    }}
-                  />
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      bottom: 20,
-                      left: 20,
-                      color: "white",
-                      zIndex: 2,
-                    }}
-                  >
-                    <Typography variant="caption" sx={{ opacity: 0.9 }}>
-                      Featured Image
-                    </Typography>
-                  </Box>
-                </Box>
-              )}
+                />
+              </Box>
 
               {/* Table of Contents */}
               {tableOfContents.length > 0 && (
@@ -712,7 +692,7 @@ export default function BlogDetailScreen({ blogId }) {
                     textAlign: "center",
                     background: `linear-gradient(135deg, ${alpha(
                       theme.palette.primary.main,
-                      0.05
+                      0.05,
                     )} 0%, ${alpha(theme.palette.secondary.main, 0.05)} 100%)`,
                     border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
                     borderRadius: 3,
@@ -836,23 +816,13 @@ export default function BlogDetailScreen({ blogId }) {
                                     justifyContent: "center",
                                   }}
                                 >
-                                  {post.image && post.image.startsWith("/") ? (
-                                    <Image
-                                      src={post.image}
-                                      alt={post.title}
-                                      width={60}
-                                      height={60}
-                                      style={{ objectFit: "cover" }}
-                                    />
-                                  ) : (
-                                    <Typography
-                                      variant="caption"
-                                      color="white"
-                                      sx={{ fontSize: "0.6rem" }}
-                                    >
-                                      Blog
-                                    </Typography>
-                                  )}
+                                  <Image
+                                    src={getSafeImage(post.image)}
+                                    alt={post.title}
+                                    width={60}
+                                    height={60}
+                                    style={{ objectFit: "cover" }}
+                                  />
                                 </Box>
                                 <Box sx={{ flex: 1, minWidth: 0 }}>
                                   <Typography
@@ -898,7 +868,7 @@ export default function BlogDetailScreen({ blogId }) {
                 p: { xs: 4, md: 6 },
                 background: `linear-gradient(135deg, ${alpha(
                   theme.palette.primary.main,
-                  0.1
+                  0.1,
                 )} 0%, ${alpha(theme.palette.secondary.main, 0.1)} 100%)`,
                 border: `1px solid ${alpha(theme.palette.divider, 0.2)}`,
               }}

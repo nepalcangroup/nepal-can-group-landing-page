@@ -1,5 +1,5 @@
 export const getSafeImage = (image) => {
-  if (!image) return "/images/blog-placeholder.jpg";
+  if (!image) return "/aboutUs/partnership.jpg";
 
   if (image.startsWith("/")) return image;
 

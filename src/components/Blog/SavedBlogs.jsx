@@ -24,12 +24,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme, alpha } from "@mui/material";
-
-const getSafeImage = (imageSrc) => {
-  if (!imageSrc) return "/heroSection/cargo.jpg";
-  if (imageSrc.startsWith("/")) return imageSrc;
-  return "/heroSection/cargo.jpg";
-};
+import { getSafeImage } from "@/utils/image";
 
 const formatDate = (dateString) => {
   if (!dateString) return "No date";
