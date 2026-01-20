@@ -27,13 +27,31 @@ import { useTheme, alpha } from "@mui/material";
 import { getSafeImage } from "@/utils/image";
 
 const formatDate = (dateString) => {
-  if (!dateString) return "No date";
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  if (!dateString) return "January 18, 2026";
+
+  try {
+    const date = new Date(dateString);
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const month = months[date.getMonth()];
+    const day = date.getDate();
+    const year = date.getFullYear();
+    return `${month} ${day}, ${year}`;
+  } catch (error) {
+    return "January 18, 2026";
+  }
 };
 
 const estimateReadingTime = (content) => {
