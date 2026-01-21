@@ -16,7 +16,7 @@ import PublicIcon from "@mui/icons-material/Public"; // Nepal Can International
 import InventoryIcon from "@mui/icons-material/Inventory"; // Nepal Can Packaging
 import CodeIcon from "@mui/icons-material/Code"; // Nepal Can Code
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag"; // Nepal Can Buy
-import TrackChangesIcon  from "@mui/icons-material/TrackChanges"; // Nepal Can Logistics
+import TrackChangesIcon from "@mui/icons-material/TrackChanges"; // Nepal Can Logistics
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const services = [
@@ -50,7 +50,7 @@ const services = [
     subtitle: "Talent Solutions",
     description:
       "Reliable logistics services empowering businesses with efficient transportation, nationwide coverage, and technology-driven delivery solutions.",
-    icon: <TrackChangesIcon  />,
+    icon: <TrackChangesIcon />,
     link: "https://logistics.nepalcan.com/",
   },
   {
@@ -62,7 +62,7 @@ const services = [
     link: "https://nepalcancode.com",
   },
   {
-    title: "Nepal Can Buy",
+    title: "Nepal Can.com",
     subtitle: "E-commerce Platform",
     description:
       "A unified marketplace offering quality products delivered to your doorstep.",
