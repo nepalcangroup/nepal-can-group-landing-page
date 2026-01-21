@@ -169,12 +169,16 @@ const TestimonialsSection = () => {
                   }}
                   onClick={() => setOpenVideo(video.src)}
                 >
-                  <ReactPlayer
-                    url={video.src}
-                    controls
-                    width="100%"
-                    height={200}
-                  />
+                  <Box sx={{ pointerEvents: "none" }}>
+                    <ReactPlayer
+                      url={video.src}
+                      // light="true"
+                      onClickPreview={() => setOpenVideo(video.src)}
+                      width="100%"
+                      height={200}
+                    />
+                  </Box>
+
                   <CardContent>
                     <Typography
                       variant="subtitle1"
@@ -213,9 +217,14 @@ const TestimonialsSection = () => {
             <ReactPlayer
               url={openVideo}
               controls
-              playing
+              playing={!!openVideo}
               width="80%"
               height="80%"
+              config={{
+                youtube: {
+                  playerVars: { autoplay: 1 },
+                },
+              }}
             />
           </Box>
         )}
