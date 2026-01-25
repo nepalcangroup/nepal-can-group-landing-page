@@ -23,7 +23,7 @@ export default function CareerSection() {
         sx={{
           position: "absolute",
           inset: 0,
-          backgroundImage: `url('/carrer/carrer.webp')`,
+          backgroundImage: `url('/career/carrer.webp')`,
           backgroundSize: "cover",
           backgroundPosition: "center right",
           zIndex: 1,

@@ -37,8 +37,8 @@ export default function Page() {
         buttonText="Partner With Us"
         buttonLink="/contact"
       />
-      <FAQSection/>
       <TestimonialsSection/>
+      <FAQSection/>
       </Layout>
     </Suspense>
   );

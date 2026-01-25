@@ -19,7 +19,7 @@ const aboutSlides = [
     description: "We believe in the power of collaboration. By aligning our logistics expertise with your business goals, we create a seamless supply chain that transcends geographical boundaries.",
   },
   {
-    image: "/timeline/technology_integration.jpg",
+    image: "/aboutUs/technology.jpg",
     title: "Transforming Nepal with",
     highlight: "digital excellence",
     description: "From national courier services to cutting-edge software development, we are committed to building the digital infrastructure that will power Nepal's future economy.",

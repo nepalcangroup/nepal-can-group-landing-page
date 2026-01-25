@@ -22,7 +22,7 @@ export default function HeroSection() {
       alt: "International Cargo",
     },
     {
-      src: "/heroSection/packaging.jpg",
+      src: "/heroSection/landTransport1.jpg",
       title: "Smart Packaging",
       subtitle: "Secure warehousing and professional packing solutions.",
       alt: "Packaging Solutions",
